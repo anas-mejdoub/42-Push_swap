@@ -6,11 +6,12 @@
 /*   By: amejdoub <amejdoub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 20:20:28 by amejdoub          #+#    #+#             */
-/*   Updated: 2024/03/25 20:38:50 by amejdoub         ###   ########.fr       */
+/*   Updated: 2024/03/25 22:23:43 by amejdoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
 int check_numbers(t_list *stack_a, int to_search)
 {
 	int i = 0;
@@ -22,6 +23,7 @@ int check_numbers(t_list *stack_a, int to_search)
 	}
 	return (1);
 }
+
 int correct_number(char *number)
 {
 	int	i;
@@ -33,6 +35,7 @@ int correct_number(char *number)
 		i++;
 	return (i == ft_strlen(number));
 }
+
 t_list *fill_stack(char **numbers)
 {
 	int i;
@@ -46,7 +49,7 @@ t_list *fill_stack(char **numbers)
 	{
 		if (!check_numbers(stack_a, ft_atoi(numbers[i])) || !correct_number(numbers[i]))
 		{
-			ft_printf("error");
+			ft_printf("error\n");
 			return (NULL);
 		}
 		data = ft_atoi(numbers[i]);
@@ -55,6 +58,7 @@ t_list *fill_stack(char **numbers)
 	}
 	return (stack_a);
 }
+
 char **parse_input(int argc, char *argv[])
 {
 	int		i;
@@ -76,10 +80,25 @@ char **parse_input(int argc, char *argv[])
 int main(int argc, char *argv[])
 {
 	t_list *stack_a;
+	t_list *stack_b;
+	
 	stack_a = fill_stack(parse_input(argc, argv));
+	stack_b = ft_lstnew(1);
+	int i = 2;
+	while (i <= 4)
+	{
+		ft_lstadd_back(&stack_b, ft_lstnew(i));
+		i++;
+	}
+	pb(&stack_a, &stack_b);
+	while (stack_b)
+	{
+		ft_printf("b->%d\n", stack_b->content);
+		stack_b = stack_b->next;
+	}
 	while (stack_a)
 	{
-		ft_printf("->%d\n", stack_a->content);
+		ft_printf("a->%d\n", stack_a->content);
 		stack_a = stack_a->next;
 	}
 }

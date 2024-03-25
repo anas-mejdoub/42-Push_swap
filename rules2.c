@@ -1,24 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   rules2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amejdoub <amejdoub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/24 20:20:31 by amejdoub          #+#    #+#             */
-/*   Updated: 2024/03/25 22:24:15 by amejdoub         ###   ########.fr       */
+/*   Created: 2024/03/25 22:24:50 by amejdoub          #+#    #+#             */
+/*   Updated: 2024/03/25 23:49:27 by amejdoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-#define PUSH_SWAP_H
+#include "push_swap.h"
 
-#include "./libft/libft.h"
-
-void sa(t_list *stack_a);
-void sb(t_list *stack_b);
-void ss(t_list *stack_a, t_list *stack_b);
-void pa(t_list **stack_a, t_list **stack_b);
-void pb(t_list **stack_a, t_list **stack_b);
-
-#endif
+// void    ra(t_list **stack_a, t_list **stack_b)
+// {
+//     t_list
+// }
