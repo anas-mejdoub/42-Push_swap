@@ -6,7 +6,7 @@
 /*   By: amejdoub <amejdoub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 20:20:28 by amejdoub          #+#    #+#             */
-/*   Updated: 2024/03/24 22:29:09 by amejdoub         ###   ########.fr       */
+/*   Updated: 2024/03/25 20:38:50 by amejdoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,17 @@ int check_numbers(t_list *stack_a, int to_search)
 	}
 	return (1);
 }
+int correct_number(char *number)
+{
+	int	i;
 
+	i = 0;
+	if (number[i] == '+' || number[i] == '-')
+		i++;
+	while (number[i] && ft_isdigit(number[i]))
+		i++;
+	return (i == ft_strlen(number));
+}
 t_list *fill_stack(char **numbers)
 {
 	int i;
@@ -34,7 +44,7 @@ t_list *fill_stack(char **numbers)
 	t_list *head = stack_a;
 	while (numbers[i])
 	{
-		if (!check_numbers(stack_a, ft_atoi(numbers[i])))
+		if (!check_numbers(stack_a, ft_atoi(numbers[i])) || !correct_number(numbers[i]))
 		{
 			ft_printf("error");
 			return (NULL);
