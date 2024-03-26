@@ -6,7 +6,7 @@
 /*   By: amejdoub <amejdoub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 21:16:42 by amejdoub          #+#    #+#             */
-/*   Updated: 2024/03/26 15:13:01 by amejdoub         ###   ########.fr       */
+/*   Updated: 2024/03/26 15:13:38 by amejdoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,4 @@ void push(t_list *stack_a, t_list *stack_b)
     }
     stack_b->next = NULL;
 }
-void push_helper(t_list **node)
-{
-    *node = NULL;
-}
+
