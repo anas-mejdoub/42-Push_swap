@@ -6,7 +6,7 @@
 /*   By: amejdoub <amejdoub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 20:20:28 by amejdoub          #+#    #+#             */
-/*   Updated: 2024/03/25 22:23:43 by amejdoub         ###   ########.fr       */
+/*   Updated: 2024/03/26 15:02:57 by amejdoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,12 +85,12 @@ int main(int argc, char *argv[])
 	stack_a = fill_stack(parse_input(argc, argv));
 	stack_b = ft_lstnew(1);
 	int i = 2;
-	while (i <= 4)
+	while (i <= 5)
 	{
 		ft_lstadd_back(&stack_b, ft_lstnew(i));
 		i++;
 	}
-	pb(&stack_a, &stack_b);
+	push(stack_a, stack_b);
 	while (stack_b)
 	{
 		ft_printf("b->%d\n", stack_b->content);

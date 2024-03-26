@@ -6,13 +6,13 @@
 /*   By: amejdoub <amejdoub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 21:16:42 by amejdoub          #+#    #+#             */
-/*   Updated: 2024/03/25 22:23:03 by amejdoub         ###   ########.fr       */
+/*   Updated: 2024/03/26 15:13:01 by amejdoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void sa(t_list *stack_a)
+void swap(t_list *stack_a)
 {
     int tmp;
 
@@ -24,64 +24,32 @@ void sa(t_list *stack_a)
     }
 }
 
-void sb(t_list *stack_b)
+void swap_both(t_list *stack_a, t_list *stack_b)
 {
-    int tmp;
-
-    if (ft_lstsize(stack_b) > 1)
-    {
-        tmp = stack_b->content;
-        stack_b->content = stack_b->next->content;
-        stack_b->next->content = tmp;
-    }
+    swap(stack_a);
+    swap(stack_b);
 }
 
-void ss(t_list *stack_a, t_list *stack_b)
+void push(t_list *stack_a, t_list *stack_b)
 {
-    sa(stack_a);
-    sb(stack_b);
-}
-
-void pa(t_list **stack_a, t_list **stack_b)
-{
-    t_list *tmp;
-    t_list *tmp2;
-
-    if (*stack_b)
-    {
-        ft_lstadd_front(stack_a, ft_lstnew((*stack_b)->content));
-        tmp = *stack_b;
-        tmp2 = (*stack_b)->next;
-        if (tmp != NULL && tmp2 != NULL)
-        {
-            while (*stack_b)
-            {
-                *stack_b = (*stack_b)->next;
-            }
-            *stack_b = tmp2;
-            free(tmp);
-        }
-    }
-}
-
-void pb(t_list **stack_a, t_list **stack_b)
-{
-    t_list *tmp;
-    t_list *tmp2;
     
-    if (*stack_a)
+    t_list *tmp;
+
+    tmp = ft_lstlast(stack_b);
+    ft_lstadd_back(&stack_a, tmp);
+    if (stack_b->next == NULL)
     {
-        ft_lstadd_front(stack_b, ft_lstnew((*stack_a)->content));
-        tmp = *stack_a;
-        tmp2 = (*stack_a)->next;
-        if (tmp != NULL && tmp2 != NULL)
-        {
-            while (*stack_a)
-            {
-                *stack_a = (*stack_a)->next;
-            }
-            *stack_a = tmp2;
-            free(tmp);
-        }
+        free(stack_b);
+        stack_b = NULL;
+        return;
     }
+    while (stack_b->next->next)
+    {
+        stack_b = stack_b->next;
+    }
+    stack_b->next = NULL;
+}
+void push_helper(t_list **node)
+{
+    *node = NULL;
 }
