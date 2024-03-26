@@ -6,7 +6,7 @@
 /*   By: amejdoub <amejdoub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 20:20:28 by amejdoub          #+#    #+#             */
-/*   Updated: 2024/03/26 15:02:57 by amejdoub         ###   ########.fr       */
+/*   Updated: 2024/03/26 21:02:55 by amejdoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,25 +80,45 @@ char **parse_input(int argc, char *argv[])
 int main(int argc, char *argv[])
 {
 	t_list *stack_a;
-	t_list *stack_b;
+	t_list *stack_b = NULL;
 	
 	stack_a = fill_stack(parse_input(argc, argv));
-	stack_b = ft_lstnew(1);
-	int i = 2;
-	while (i <= 5)
-	{
-		ft_lstadd_back(&stack_b, ft_lstnew(i));
-		i++;
-	}
-	push(stack_a, stack_b);
-	while (stack_b)
-	{
-		ft_printf("b->%d\n", stack_b->content);
-		stack_b = stack_b->next;
-	}
+	// stack_b = ft_lstnew(1);
+	// int i = 2;
+	// while (i <= 5)
+	// {
+	// 	ft_lstadd_back(&stack_b, ft_lstnew(i));
+	// 	i++;
+	// }
+	swap(stack_a);
+	push(&stack_a, &stack_b);
+	push(&stack_a, &stack_b);
+	push(&stack_a, &stack_b);
+	swap(stack_a);
+	push(&stack_b, &stack_a);
+	push(&stack_b, &stack_a);
+	push(&stack_b, &stack_a);
+	// push(&stack_a, &stack_b);
+	// ft_printf("b->%d\n", stack_b->content);
+	// push(stack_b,stack_a);
+	// push(stack_b,stack_a);
+	// swap(stack_a);
+	// push(stack_a,stack_b);
+	// push(stack_a,stack_b);
+	// push(stack_a,stack_b);
+	
+
+	// // push(stack_a, stack_b);
+	// rotate(stack_b);
 	while (stack_a)
 	{
 		ft_printf("a->%d\n", stack_a->content);
 		stack_a = stack_a->next;
 	}
-}
+	// ft_printf("stack b :\n");
+	// while (stack_b)
+	// {
+	// 	ft_printf("b->%d\n", stack_b->content);
+	// 	stack_b = stack_b->next;
+	// }
+} // 00000898989898989898
