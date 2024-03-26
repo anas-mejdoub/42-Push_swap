@@ -6,7 +6,7 @@
 /*   By: amejdoub <amejdoub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 21:16:42 by amejdoub          #+#    #+#             */
-/*   Updated: 2024/03/26 22:12:19 by amejdoub         ###   ########.fr       */
+/*   Updated: 2024/03/26 23:08:19 by amejdoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,14 @@ void push(t_list **src, t_list **dest)
         *dest = tmp;
     }
 }
+
 void rotate(t_list **stack_)
 {
     t_list *last;
     t_list *tmp;
 
+    if (ft_lstsize(*stack_) <= 1)
+        return;
     last = ft_lstlast(*stack_);
     tmp = *stack_;
     while (tmp->next->next)
@@ -57,5 +60,29 @@ void rotate(t_list **stack_)
     last->next = *stack_;
     *stack_ = last;
 }
-// 1 2 3 4
-// 4 1 2 3
+
+void rotate_both(t_list **stack_a, t_list **stack_b)
+{
+    rotate(stack_a);
+    rotate(stack_b);
+}
+
+void reverse_rotate(t_list **stack_)
+{
+    t_list  *first;
+    t_list  *last;
+
+    if (ft_lstsize(*stack_) <= 1)
+        return ;
+    first = *stack_;
+    last = ft_lstlast(*stack_);
+    (*stack_) = (*stack_)->next;
+    last->next = first;
+    first->next = NULL;
+}
+
+void re_rotate_both(t_list **stack_a, t_list **stack_b)
+{
+    reverse_rotate(stack_a);
+    reverse_rotate(stack_b);
+}

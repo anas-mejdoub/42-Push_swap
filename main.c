@@ -6,7 +6,7 @@
 /*   By: amejdoub <amejdoub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 20:20:28 by amejdoub          #+#    #+#             */
-/*   Updated: 2024/03/26 22:11:51 by amejdoub         ###   ########.fr       */
+/*   Updated: 2024/03/26 22:53:25 by amejdoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,8 +106,8 @@ int main(int argc, char *argv[])
 	// push(stack_a,stack_b);
 	// push(stack_a,stack_b);
 	// push(stack_a,stack_b);
-	rotate(&stack_a);
-
+	// rotate(&stack_a);
+	reverse_rotate(&stack_a);
 	// // push(stack_a, stack_b);
 	// rotate(stack_b);
 	while (stack_a)
