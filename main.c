@@ -6,7 +6,7 @@
 /*   By: amejdoub <amejdoub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 20:20:28 by amejdoub          #+#    #+#             */
-/*   Updated: 2024/03/27 21:40:37 by amejdoub         ###   ########.fr       */
+/*   Updated: 2024/03/27 22:22:34 by amejdoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,53 @@ void sort_three(t_list **stack_a, t_list **stack_b)
 		}
 	}
 }
+int find_min(t_list *stack_, int n)
+{
+	int	min;
+
+	min = stack_->content;
+	while (stack_)
+	{
+		if (min > stack_->content)
+			min = stack_->content;
+		stack_ = stack_->next;
+	}
+	return (min == n);
+}
+int is_sorted(t_list *stack_)
+{
+	int temp;
+
+	temp = stack_->content;
+	while (stack_)
+	{
+		if (temp > stack_->content)
+			return (0);
+		stack_ = stack_->next;
+	}
+	return (1);
+}
+void sort_four(t_list **stack_a, t_list **stack_b)
+{
+	if (is_sorted(*stack_a))
+		return ;
+	while(1)
+	{
+		if (find_min(*stack_a, (*stack_a)->content))
+		{
+			push(stack_a, stack_b);
+			ft_printf("pb\n");
+			sort_three(stack_a, stack_b);
+			push(stack_b, stack_a);
+			ft_printf("pa\n");
+			return ;
+		}
+		rotate(stack_a);
+		ft_printf("ra\n");
+	}
+}
+
+
 int main(int argc, char *argv[])
 {
 	t_list *stack_a;
@@ -116,12 +163,18 @@ int main(int argc, char *argv[])
 	stack_a = fill_stack(parse_input(argc, argv));
 	if (!stack_a)
 		return 0;
-	sort_three(&stack_a, &stack_b);
+	// push(&stack_a, &stack_b);
+	sort_four(&stack_a, &stack_b);
 	while (stack_a)
 	{
 		ft_printf("a->%d\n", stack_a->content);
 		stack_a = stack_a->next;
 	}
+	// while (stack_b)
+	// {
+	// 	ft_printf("b->%d\n", stack_b->content);
+	// 	stack_b = stack_b->next;
+	// }
 
 }
 
