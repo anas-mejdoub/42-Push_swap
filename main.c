@@ -6,12 +6,16 @@
 /*   By: amejdoub <amejdoub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 20:20:28 by amejdoub          #+#    #+#             */
-/*   Updated: 2024/03/26 22:53:25 by amejdoub         ###   ########.fr       */
+/*   Updated: 2024/03/27 21:40:37 by amejdoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+void test_sort(t_list *stack_a, int to_search)
+{
+	 
+}
 int check_numbers(t_list *stack_a, int to_search)
 {
 	int i = 0;
@@ -76,49 +80,48 @@ char **parse_input(int argc, char *argv[])
 	numbers = ft_split(str, ' ');
 	return (numbers);
 }
-
+void sort_three(t_list **stack_a, t_list **stack_b)
+{
+	if ((*stack_a)->content > (*stack_a)->next->content && (*stack_a)->next->content > (*stack_a)->next->next->content)
+	{
+		reverse_rotate(stack_a);
+		swap(*stack_a);
+		ft_printf("ra\nsa\n");
+	}
+	else if ((*stack_a)->content > (*stack_a)->next->content && (*stack_a)->next->content < (*stack_a)->next->next->content)
+	{
+		swap(*stack_a);
+		ft_printf("sa\n");
+	}
+	else if ((*stack_a)->content < (*stack_a)->next->content && (*stack_a)->next->content > (*stack_a)->next->next->content)
+	{
+		if ((*stack_a)->content < (*stack_a)->next->next->content)
+		{
+			rotate(stack_a);
+			swap(*stack_a);
+			ft_printf("ra\nsa\n");			
+		}
+		else
+		{
+			rotate(stack_a);
+			ft_printf("ra\n");
+		}
+	}
+}
 int main(int argc, char *argv[])
 {
 	t_list *stack_a;
 	t_list *stack_b = NULL;
 	
 	stack_a = fill_stack(parse_input(argc, argv));
-	// stack_b = ft_lstnew(1);
-	// int i = 2;
-	// while (i <= 5)
-	// {
-	// 	ft_lstadd_back(&stack_b, ft_lstnew(i));
-	// 	i++;
-	// }
-	// swap(stack_a);
-	// push(&stack_a, &stack_b);
-	// push(&stack_a, &stack_b);
-	// push(&stack_a, &stack_b);
-	// swap(stack_a);
-	// push(&stack_b, &stack_a);
-	// push(&stack_b, &stack_a);
-	// push(&stack_b, &stack_a);
-	// push(&stack_a, &stack_b);
-	// ft_printf("b->%d\n", stack_b->content);
-	// push(stack_b,stack_a);
-	// push(stack_b,stack_a);
-	// swap(stack_a);
-	// push(stack_a,stack_b);
-	// push(stack_a,stack_b);
-	// push(stack_a,stack_b);
-	// rotate(&stack_a);
-	reverse_rotate(&stack_a);
-	// // push(stack_a, stack_b);
-	// rotate(stack_b);
+	if (!stack_a)
+		return 0;
+	sort_three(&stack_a, &stack_b);
 	while (stack_a)
 	{
 		ft_printf("a->%d\n", stack_a->content);
 		stack_a = stack_a->next;
 	}
-	// ft_printf("stack b :\n");
-	// while (stack_b)
-	// {
-	// 	ft_printf("b->%d\n", stack_b->content);
-	// 	stack_b = stack_b->next;
-	// }
-} // 00000898989898989898
+
+}
+
