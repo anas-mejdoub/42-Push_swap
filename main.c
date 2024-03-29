@@ -6,7 +6,7 @@
 /*   By: amejdoub <amejdoub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 20:20:28 by amejdoub          #+#    #+#             */
-/*   Updated: 2024/03/29 13:32:54 by amejdoub         ###   ########.fr       */
+/*   Updated: 2024/03/29 13:35:04 by amejdoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -223,7 +223,7 @@ void test(t_list *stack_a)
 {
 	
 	buble_sort(stack_a);
-	indexing(stack_a);
+	indexing(stack_a); 
 }
 int main(int argc, char *argv[])
 {
