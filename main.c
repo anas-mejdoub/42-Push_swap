@@ -6,7 +6,7 @@
 /*   By: amejdoub <amejdoub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 20:20:28 by amejdoub          #+#    #+#             */
-/*   Updated: 2024/03/27 22:46:25 by amejdoub         ###   ########.fr       */
+/*   Updated: 2024/03/29 13:32:54 by amejdoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,6 +182,49 @@ void sort_five(t_list **stack_a, t_list **stack_b)
 		ft_printf("ra\n");
 	}
 }
+
+void	buble_sort(t_list *stack_)
+{
+	t_list *stack_a;
+	int	temp;
+	t_list	*tmp;
+
+	stack_a = stack_;
+	while (stack_a)
+	{
+		tmp = stack_a->next;
+		while (tmp)
+		{
+			if (stack_a->content > tmp->content)
+			{
+				temp = stack_a->content;
+				stack_a->content = tmp->content;
+				tmp->content = temp;
+			}
+			tmp = tmp->next;
+		}
+		stack_a = stack_a->next;
+	}
+}
+
+void indexing(t_list *stack_)
+{
+	int	i;
+
+	i = 0;
+	while (stack_)
+	{
+		stack_->index = i;
+		stack_ = stack_->next;
+		i++;
+	}
+}
+void test(t_list *stack_a)
+{
+	
+	buble_sort(stack_a);
+	indexing(stack_a);
+}
 int main(int argc, char *argv[])
 {
 	t_list *stack_a;
@@ -190,12 +233,11 @@ int main(int argc, char *argv[])
 	stack_a = fill_stack(parse_input(argc, argv));
 	if (!stack_a)
 		return 0;
-	sort_five(&stack_a, &stack_b);
+	test(stack_a);
 	while (stack_a)
 	{
 		ft_printf("a->%d\n", stack_a->content);
 		stack_a = stack_a->next;
 	}
-
 }
 

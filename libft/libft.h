@@ -6,7 +6,7 @@
 /*   By: amejdoub <amejdoub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 12:27:32 by amejdoub          #+#    #+#             */
-/*   Updated: 2024/03/24 22:23:00 by amejdoub         ###   ########.fr       */
+/*   Updated: 2024/03/28 20:33:26 by amejdoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ int					ft_strncmp(const char *str1, const char *str2, size_t n);
 typedef struct s_list
 {
 	int			content;
+	int			index;
 	struct s_list	*next;
 }					t_list;
 
