@@ -6,7 +6,7 @@
 /*   By: amejdoub <amejdoub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 20:20:28 by amejdoub          #+#    #+#             */
-/*   Updated: 2024/03/29 13:35:04 by amejdoub         ###   ########.fr       */
+/*   Updated: 2024/04/01 14:37:10 by amejdoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ int check_numbers(t_list *stack_a, int to_search)
 }
 
 int correct_number(char *number)
-{
-	int	i;
-
+{ 
+	int	i;  
+  
 	i = 0;
 	if (number[i] == '+' || number[i] == '-')
 		i++;
