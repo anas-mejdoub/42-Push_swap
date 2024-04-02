@@ -6,7 +6,7 @@
 /*   By: amejdoub <amejdoub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 20:20:28 by amejdoub          #+#    #+#             */
-/*   Updated: 2024/04/02 16:52:17 by amejdoub         ###   ########.fr       */
+/*   Updated: 2024/04/02 23:52:32 by amejdoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,30 +184,6 @@ void sort_five(t_list **stack_a, t_list **stack_b)
 	}
 }
 
-// void	buble_sort(t_list *stack_)
-// {
-// 	t_list *stack_a = ft_lstcopy(stack_);
-// 	int	temp;
-// 	t_list	*tmp;
-
-// 	// stack_a = stack_;
-// 	while (stack_a)
-// 	{
-// 		tmp = stack_a->next;
-// 		while (tmp)
-// 		{
-// 			if (stack_a->content > tmp->content)
-// 			{
-// 				temp = stack_a->content;
-// 				stack_a->content = tmp->content;
-// 				tmp->content = temp;
-// 			}
-// 			tmp = tmp->next;
-// 		}
-// 		stack_a = stack_a->next;
-// 	}
-// }
-
 void indexing(t_list *stack_)
 {
 	int	i;
@@ -229,6 +205,36 @@ void indexing(t_list *stack_)
 	}
 }
 
+void test_sort(t_list **stack_a, t_list **stack_b)
+{
+	int i = 0;
+	int range = 4;
+	while ((*stack_a))
+	{
+		if ((*stack_a)->index <= range && (*stack_a)->index >= i)
+		{
+			push(stack_a, stack_b);
+			ft_printf("pb\n");
+			i++;
+			range++;
+		}
+		else if ((*stack_a)->index < i)
+		{
+			push(stack_a, stack_b);
+			rotate(stack_b);
+			ft_printf("pb\n");
+			ft_printf("rb\n");
+			i++;
+			range++;
+		}
+		else //if ((*stack_a)->index > range)
+		{
+			rotate(stack_a);
+			ft_printf("ra\n");
+		}
+	}
+}
+
 int main(int argc, char *argv[])
 {
 	t_list *stack_a;
@@ -238,10 +244,25 @@ int main(int argc, char *argv[])
 	if (!stack_a)
 		return 0;
 	indexing(stack_a);
-	while (stack_a)
+	push(&stack_a, &stack_b);
+	push(&stack_a, &stack_b);
+	reverse_rotate(&stack_b);
+	push(&stack_a, &stack_b);
+	push(&stack_a, &stack_b);
+	push(&stack_a, &stack_b);
+	reverse_rotate(&stack_a);
+	push(&stack_a, &stack_b);
+	
+	while (stack_b)
 	{
-		ft_printf("a->%d\n", stack_a->index);
-		stack_a = stack_a->next;
+		ft_printf("b->%d\n", stack_b->index);
+		stack_b = stack_b->next;
 	}
+	// while (stack_a)
+	// {
+	// 	ft_printf("a->%d\n", stack_a->content);
+	// 	stack_a = stack_a->next;
+	// }
 }
 
+// 3 
