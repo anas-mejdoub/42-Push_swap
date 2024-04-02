@@ -6,7 +6,7 @@
 /*   By: amejdoub <amejdoub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 20:20:28 by amejdoub          #+#    #+#             */
-/*   Updated: 2024/04/02 16:17:36 by amejdoub         ###   ########.fr       */
+/*   Updated: 2024/04/02 16:52:17 by amejdoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,48 +184,49 @@ void sort_five(t_list **stack_a, t_list **stack_b)
 	}
 }
 
-void	buble_sort(t_list *stack_)
-{
-	t_list *stack_a;
-	int	temp;
-	t_list	*tmp;
+// void	buble_sort(t_list *stack_)
+// {
+// 	t_list *stack_a = ft_lstcopy(stack_);
+// 	int	temp;
+// 	t_list	*tmp;
 
-	stack_a = stack_;
-	while (stack_a)
-	{
-		tmp = stack_a->next;
-		while (tmp)
-		{
-			if (stack_a->content > tmp->content)
-			{
-				temp = stack_a->content;
-				stack_a->content = tmp->content;
-				tmp->content = temp;
-			}
-			tmp = tmp->next;
-		}
-		stack_a = stack_a->next;
-	}
-}
+// 	// stack_a = stack_;
+// 	while (stack_a)
+// 	{
+// 		tmp = stack_a->next;
+// 		while (tmp)
+// 		{
+// 			if (stack_a->content > tmp->content)
+// 			{
+// 				temp = stack_a->content;
+// 				stack_a->content = tmp->content;
+// 				tmp->content = temp;
+// 			}
+// 			tmp = tmp->next;
+// 		}
+// 		stack_a = stack_a->next;
+// 	}
+// }
 
 void indexing(t_list *stack_)
 {
 	int	i;
+	t_list *tmp;
+	t_list *head;
 
-	i = 0;
+	head = stack_;
 	while (stack_)
 	{
-		stack_->index = i;
+		stack_->index = 0;
+		tmp = head;
+		while (tmp)
+		{
+			if (stack_->content > tmp->content)
+				stack_->index++;
+			tmp = tmp->next;
+		}
 		stack_ = stack_->next;
-		i++;
 	}
-}
-
-void test(t_list *stack_a)
-{
-	
-	buble_sort(stack_a);
-	indexing(stack_a); 
 }
 
 int main(int argc, char *argv[])
@@ -236,10 +237,10 @@ int main(int argc, char *argv[])
 	stack_a = fill_stack(parse_input(argc, argv));
 	if (!stack_a)
 		return 0;
-	test(stack_a);
+	indexing(stack_a);
 	while (stack_a)
 	{
-		ft_printf("a->%d\n", stack_a->content);
+		ft_printf("a->%d\n", stack_a->index);
 		stack_a = stack_a->next;
 	}
 }
