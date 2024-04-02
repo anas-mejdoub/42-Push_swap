@@ -6,16 +6,12 @@
 /*   By: amejdoub <amejdoub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 20:20:28 by amejdoub          #+#    #+#             */
-/*   Updated: 2024/04/01 14:37:10 by amejdoub         ###   ########.fr       */
+/*   Updated: 2024/04/02 16:17:36 by amejdoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void test_sort(t_list *stack_a, int to_search)
-{
-	 
-}
 int check_numbers(t_list *stack_a, int to_search)
 {
 	int i = 0;
@@ -80,6 +76,7 @@ char **parse_input(int argc, char *argv[])
 	numbers = ft_split(str, ' ');
 	return (numbers);
 }
+
 void sort_three(t_list **stack_a, t_list **stack_b)
 {
 	if ((*stack_a)->content > (*stack_a)->next->content && (*stack_a)->next->content > (*stack_a)->next->next->content)
@@ -99,7 +96,7 @@ void sort_three(t_list **stack_a, t_list **stack_b)
 		{
 			rotate(stack_a);
 			swap(*stack_a);
-			ft_printf("ra\nsa\n");			
+			ft_printf("ra\nsa\n");
 		}
 		else
 		{
@@ -108,6 +105,7 @@ void sort_three(t_list **stack_a, t_list **stack_b)
 		}
 	}
 }
+
 int find_min(t_list *stack_, int n)
 {
 	int	min;
@@ -121,6 +119,7 @@ int find_min(t_list *stack_, int n)
 	}
 	return (min == n);
 }
+
 int is_sorted(t_list *stack_)
 {
 	int temp;
@@ -135,6 +134,7 @@ int is_sorted(t_list *stack_)
 	}
 	return (1);
 }
+
 void print_list(t_list *stack_)
 {
 	while (stack_)
@@ -142,6 +142,7 @@ void print_list(t_list *stack_)
 		stack_ = stack_->next;
 	}
 }
+
 void sort_four(t_list **stack_a, t_list **stack_b)
 {
 			print_list(*stack_a);
@@ -219,12 +220,14 @@ void indexing(t_list *stack_)
 		i++;
 	}
 }
+
 void test(t_list *stack_a)
 {
 	
 	buble_sort(stack_a);
 	indexing(stack_a); 
 }
+
 int main(int argc, char *argv[])
 {
 	t_list *stack_a;
