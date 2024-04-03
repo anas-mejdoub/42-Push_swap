@@ -6,7 +6,7 @@
 /*   By: amejdoub <amejdoub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 20:20:28 by amejdoub          #+#    #+#             */
-/*   Updated: 2024/04/02 23:52:32 by amejdoub         ###   ########.fr       */
+/*   Updated: 2024/04/03 14:52:30 by amejdoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -204,7 +204,27 @@ void indexing(t_list *stack_)
 		stack_ = stack_->next;
 	}
 }
-
+void apply_postion(t_list *stack_)
+{
+	int i = 0;
+	while (stack_)
+	{
+		stack_->position = i;
+		stack_= stack_->next;
+		i++;
+	}
+}
+int get_max(t_list *stack_)
+{
+	int max = 0;
+	while (stack_)
+	{
+		if (stack_->index > max)
+			max = stack_->index;
+		stack_ = stack_->next;
+	}
+	return (max);
+}
 void test_sort(t_list **stack_a, t_list **stack_b)
 {
 	int i = 0;
@@ -221,17 +241,39 @@ void test_sort(t_list **stack_a, t_list **stack_b)
 		else if ((*stack_a)->index < i)
 		{
 			push(stack_a, stack_b);
-			rotate(stack_b);
+			reverse_rotate(stack_b);
 			ft_printf("pb\n");
 			ft_printf("rb\n");
 			i++;
 			range++;
 		}
-		else //if ((*stack_a)->index > range)
+		else
 		{
-			rotate(stack_a);
+			reverse_rotate(stack_a);
 			ft_printf("ra\n");
 		}
+	}
+	i = 0;
+	// int first_half = ft_lstsize(*stack_b) / 2;
+	// apply_postion(stack_b);
+	// print_list()
+	while ((*stack_b))
+	{
+		if (get_max(*stack_b) == (*stack_b)->index)
+		{
+			push(stack_b, stack_a);
+			ft_printf("pa\n");
+		}
+		else
+		{
+			rotate(stack_b);
+			ft_printf("ra\n");
+
+		}
+		// while (i < size)
+		// {
+		// 	if ()
+		// }
 	}
 }
 
@@ -244,25 +286,17 @@ int main(int argc, char *argv[])
 	if (!stack_a)
 		return 0;
 	indexing(stack_a);
-	push(&stack_a, &stack_b);
-	push(&stack_a, &stack_b);
-	reverse_rotate(&stack_b);
-	push(&stack_a, &stack_b);
-	push(&stack_a, &stack_b);
-	push(&stack_a, &stack_b);
-	reverse_rotate(&stack_a);
-	push(&stack_a, &stack_b);
-	
-	while (stack_b)
-	{
-		ft_printf("b->%d\n", stack_b->index);
-		stack_b = stack_b->next;
-	}
+	// apply_postion(stack_a);
+	// ft_printf("%d\n", get_max(stack_a));
+	test_sort(&stack_a, &stack_b);
+	// while (stack_b)
+	// {
+	// 	ft_printf("index : %d", stack_b->index);
+	// 	stack_b = stack_b->next;
+	// }
 	// while (stack_a)
 	// {
 	// 	ft_printf("a->%d\n", stack_a->content);
 	// 	stack_a = stack_a->next;
 	// }
 }
-
-// 3 
