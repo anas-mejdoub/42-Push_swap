@@ -81,20 +81,20 @@ void sort_three(t_list **stack_a, t_list **stack_b)
 {
 	if ((*stack_a)->content > (*stack_a)->next->content && (*stack_a)->next->content > (*stack_a)->next->next->content)
 	{
-		reverse_rotate(stack_a, "rra");
+		rotate(stack_a, "rra");
 		swap(*stack_a, "sa");
 	}
 	else if ((*stack_a)->content > (*stack_a)->next->content && (*stack_a)->next->content < (*stack_a)->next->next->content)
-		swap(*stack_a, "sa");
+		rotate(stack_a, "ra");
 	else if ((*stack_a)->content < (*stack_a)->next->content && (*stack_a)->next->content > (*stack_a)->next->next->content)
 	{
 		if ((*stack_a)->content < (*stack_a)->next->next->content)
 		{
-			rotate(stack_a, "ra");
+			reverse_rotate(stack_a, "ra");
 			swap(*stack_a, "sa");
 		}
 		else
-			rotate(stack_a, "ra\n");
+			reverse_rotate(stack_a, "ra\n");
 	}
 }
 
@@ -257,7 +257,22 @@ int find_half(t_list *stack_)
 	return 0;
 	
 }
-
+void option_sort(t_list **stack_a, t_list **stack_b)
+{
+	if (ft_lstsize(*stack_a) > 5)
+		_sort_(stack_a, stack_b);
+	else if (ft_lstsize(*stack_a) == 5)
+		sort_five(stack_a, stack_b);
+	else if (ft_lstsize(*stack_a) == 4)
+		sort_four(stack_a, stack_b);
+	else if (ft_lstsize(*stack_a) == 3)
+		sort_three(stack_a, stack_b);
+	else if (ft_lstsize(*stack_a) == 2)
+	{
+		if (!is_sorted(*stack_a))
+			swap(*stack_a, "sa");
+	}
+}
 int main(int argc, char *argv[])
 {
 	t_list *stack_a;
@@ -267,10 +282,11 @@ int main(int argc, char *argv[])
 	if (!stack_a)
 		return 0;
 	indexing(stack_a);
-	_sort_(&stack_a, &stack_b);
+	option_sort(&stack_a, &stack_b);
 	while (stack_a)
 	{
-		ft_printf("a->%d\n", stack_a->index);
+		ft_printf("a->%d\n", stack_a->content);
 		stack_a = stack_a->next;
 	}
+	return 0;
 }
