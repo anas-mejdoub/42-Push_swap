@@ -204,16 +204,7 @@ void indexing(t_list *stack_)
 		stack_ = stack_->next;
 	}
 }
-void apply_postion(t_list *stack_)
-{
-	int i = 0;
-	while (stack_)
-	{
-		stack_->position = i;
-		stack_= stack_->next;
-		i++;
-	}
-}
+
 int get_max(t_list *stack_)
 {
 	int max = 0;
@@ -228,7 +219,7 @@ int get_max(t_list *stack_)
 void test_sort(t_list **stack_a, t_list **stack_b)
 {
 	int i = 0;
-	int range = 30;
+	int range = 15;
 	while ((*stack_a))
 	{
 		if ((*stack_a)->index <= range && (*stack_a)->index >= i)
@@ -265,16 +256,14 @@ void test_sort(t_list **stack_a, t_list **stack_b)
 		{
 			if (find_half(*stack_b) == 1)
 			{
-				rotate(stack_b);
-				ft_printf("ra\n");
-
+					rotate(stack_b);
+					ft_printf("ra\n");
 			}
 			else if (find_half(*stack_b) == 2)
 			{
 				reverse_rotate(stack_b);
 				ft_printf("rra\n");
 			}
-
 		}
 	}
 }
@@ -309,18 +298,10 @@ int main(int argc, char *argv[])
 	if (!stack_a)
 		return 0;
 	indexing(stack_a);
-	// apply_postion(stack_a);
-	// ft_printf("%d\n", get_max(stack_a));
 	test_sort(&stack_a, &stack_b);
-	// return find_half(stack_a);
-	// while (stack_b)
-	// {
-	// 	ft_printf("index : %d", stack_b->index);
-	// 	stack_b = stack_b->next;
-	// }
 	// while (stack_a)
 	// {
-	// 	ft_printf("a->%d\n", stack_a->content);
+	// 	ft_printf("a->%d\n", stack_a->index);
 	// 	stack_a = stack_a->next;
 	// }
 }
