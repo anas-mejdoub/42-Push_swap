@@ -130,7 +130,6 @@ int is_sorted(t_list *stack_)
 
 void sort_four(t_list **stack_a, t_list **stack_b)
 {
-			print_list(*stack_a);
 	if (is_sorted(*stack_a))
 		return ;
 	while(1)
@@ -196,7 +195,23 @@ int get_max(t_list *stack_)
 	return (max);
 }
 
-void test_sort(t_list **stack_a, t_list **stack_b)
+void fill_a(t_list **stack_a, t_list **stack_b)
+{
+	while ((*stack_b))
+		{
+			if (get_max(*stack_b) == (*stack_b)->index)
+				push(stack_b, stack_a, "pa");
+			else
+			{
+				if (find_half(*stack_b) == 1)
+						rotate(stack_b, "rb");
+				else if (find_half(*stack_b) == 2)
+					reverse_rotate(stack_b, "rrb");
+			}
+		}
+}
+
+void _sort_(t_list **stack_a, t_list **stack_b)
 {
 	int i = 0;
 	int range = 15;
@@ -218,19 +233,8 @@ void test_sort(t_list **stack_a, t_list **stack_b)
 		else
 			rotate(stack_a, "ra");
 	}
-	i = 0;
-	while ((*stack_b))
-	{
-		if (get_max(*stack_b) == (*stack_b)->index)
-			push(stack_b, stack_a, "pa");
-		else
-		{
-			if (find_half(*stack_b) == 1)
-					rotate(stack_b, "rb");
-			else if (find_half(*stack_b) == 2)
-				reverse_rotate(stack_b, "rrb");
-		}
-	}
+	fill_a(stack_a, stack_b);
+	
 }
 
 int find_half(t_list *stack_)
@@ -263,10 +267,10 @@ int main(int argc, char *argv[])
 	if (!stack_a)
 		return 0;
 	indexing(stack_a);
-	test_sort(&stack_a, &stack_b);
-	// while (stack_a)
-	// {
-	// 	ft_printf("a->%d\n", stack_a->index);
-	// 	stack_a = stack_a->next;
-	// }
+	_sort_(&stack_a, &stack_b);
+	while (stack_a)
+	{
+		ft_printf("a->%d\n", stack_a->index);
+		stack_a = stack_a->next;
+	}
 }
