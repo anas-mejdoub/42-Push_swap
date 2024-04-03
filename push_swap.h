@@ -18,6 +18,7 @@
 void swap(t_list *stack_a);
 
 void swap_both(t_list *stack_a, t_list *stack_b);
+int find_half(t_list *stack_);
 void push(t_list **src, t_list **dest);
 void rotate(t_list **stack_);
 void rotate_both(t_list **stack_a, t_list **stack_b);

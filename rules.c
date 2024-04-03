@@ -43,7 +43,7 @@ void push(t_list **src, t_list **dest)
     }
 }
 
-void rotate(t_list **stack_)
+void reverse_rotate(t_list **stack_)
 {
     t_list *last;
     t_list *tmp;
@@ -67,7 +67,7 @@ void rotate_both(t_list **stack_a, t_list **stack_b)
     rotate(stack_b);
 }
 
-void reverse_rotate(t_list **stack_)
+void rotate(t_list **stack_)
 {
     t_list  *first;
     t_list  *last;
