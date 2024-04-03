@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void swap(t_list *stack_a)
+void swap(t_list *stack_a, char *operation)
 {
     int tmp;
 
@@ -22,15 +22,16 @@ void swap(t_list *stack_a)
         stack_a->content = stack_a->next->content;
         stack_a->next->content = tmp;
     }
+    ft_printf("%s\n", operation);
 }
 
 void swap_both(t_list *stack_a, t_list *stack_b)
 {
-    swap(stack_a);
-    swap(stack_b);
+    swap(stack_a, "sa");
+    swap(stack_b, "sb");
 }
 
-void push(t_list **src, t_list **dest)
+void push(t_list **src, t_list **dest, char *operation)
 {
     t_list *tmp;
 
@@ -41,9 +42,10 @@ void push(t_list **src, t_list **dest)
         tmp->next = *dest;
         *dest = tmp;
     }
+    ft_printf("%s\n", operation);
 }
 
-void reverse_rotate(t_list **stack_)
+void reverse_rotate(t_list **stack_, char *operation)
 {
     t_list *last;
     t_list *tmp;
@@ -59,15 +61,16 @@ void reverse_rotate(t_list **stack_)
     tmp->next = NULL;
     last->next = *stack_;
     *stack_ = last;
+    ft_printf("%s\n", operation);
 }
 
 void rotate_both(t_list **stack_a, t_list **stack_b)
 {
-    rotate(stack_a);
-    rotate(stack_b);
+    rotate(stack_a, "ra");
+    rotate(stack_b, "rb");
 }
 
-void rotate(t_list **stack_)
+void rotate(t_list **stack_, char *operation)
 {
     t_list  *first;
     t_list  *last;
@@ -79,10 +82,11 @@ void rotate(t_list **stack_)
     (*stack_) = (*stack_)->next;
     last->next = first;
     first->next = NULL;
+    ft_printf("%s\n", operation);
 }
 
 void re_rotate_both(t_list **stack_a, t_list **stack_b)
 {
-    reverse_rotate(stack_a);
-    reverse_rotate(stack_b);
+    reverse_rotate(stack_a, "rra");
+    reverse_rotate(stack_b, "rrb");
 }
