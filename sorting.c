@@ -6,7 +6,7 @@
 /*   By: amejdoub <amejdoub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 15:09:14 by amejdoub          #+#    #+#             */
-/*   Updated: 2024/04/04 15:10:50 by amejdoub         ###   ########.fr       */
+/*   Updated: 2024/04/04 15:54:15 by amejdoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	_sort_(t_list **stack_a, t_list **stack_b)
 	int	range;
 
 	i = 0;
-	range = 4;
+	range = 2;
 	while ((*stack_a))
 	{
 		if ((*stack_a)->index <= range && (*stack_a)->index >= i)
