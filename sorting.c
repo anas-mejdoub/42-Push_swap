@@ -18,7 +18,7 @@ void	_sort_(t_list **stack_a, t_list **stack_b)
 	int	range;
 
 	i = 0;
-	range = 2;
+	range = range_eq(ft_lstsize(*stack_a));
 	while ((*stack_a))
 	{
 		if ((*stack_a)->index <= range && (*stack_a)->index >= i)

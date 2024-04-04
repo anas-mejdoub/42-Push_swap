@@ -40,4 +40,5 @@ int	get_max(t_list *stack_);
 int	is_sorted(t_list *stack_);
 int	find_min(t_list *stack_, int n);
 void	indexing(t_list *stack_);
+int range_eq(int n);
 #endif
