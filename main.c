@@ -6,15 +6,17 @@
 /*   By: amejdoub <amejdoub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 20:20:28 by amejdoub          #+#    #+#             */
-/*   Updated: 2024/04/03 14:52:30 by amejdoub         ###   ########.fr       */
+/*   Updated: 2024/04/04 14:46:07 by amejdoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int check_numbers(t_list *stack_a, int to_search)
+int	check_numbers(t_list *stack_a, int to_search)
 {
-	int i = 0;
+	int	i;
+
+	i = 0;
 	while (stack_a != NULL)
 	{
 		if (stack_a->content == to_search)
@@ -24,10 +26,10 @@ int check_numbers(t_list *stack_a, int to_search)
 	return (1);
 }
 
-int correct_number(char *number)
-{ 
-	int	i;  
-  
+int	correct_number(char *number)
+{
+	int	i;
+
 	i = 0;
 	if (number[i] == '+' || number[i] == '-')
 		i++;
@@ -35,16 +37,32 @@ int correct_number(char *number)
 		i++;
 	return (i == ft_strlen(number));
 }
-
-t_list *fill_stack(char **numbers)
+void	free2d(void **res)
 {
-	int i;
-	t_list *stack_a;
-	int	data;
-	
+	int	i;
+
+	i = 0;
+	if (res != NULL)
+	{
+		while (res[i])
+		{
+			free(res[i]);
+			i++;
+		}
+		free(res);
+	}
+}
+
+t_list	*fill_stack(char **numbers)
+{
+	int		i;
+	t_list	*stack_a;
+	int		data;
+	t_list	*head;
+
 	i = 0;
 	stack_a = NULL;
-	t_list *head = stack_a;
+	head = stack_a;
 	if (!numbers)
 	{
 		ft_printf("error\n");
@@ -52,48 +70,55 @@ t_list *fill_stack(char **numbers)
 	}
 	while (numbers[i])
 	{
-		if (!check_numbers(stack_a, ft_atoi(numbers[i])) || !correct_number(numbers[i]) || (ft_strlen(numbers[i]) > 1 && !ft_atoi(numbers[i])))
+		if (!check_numbers(stack_a, ft_atoi(numbers[i]))
+			|| !correct_number(numbers[i]) || (ft_strlen(numbers[i]) > 1
+				&& !ft_atoi(numbers[i])))
 		{
 			ft_printf("error\n");
-			return (NULL);
+			return (free2d((void **)numbers), NULL);
 		}
 		data = ft_atoi(numbers[i]);
 		ft_lstadd_back(&stack_a, ft_lstnew((data)));
 		i++;
 	}
+	free2d((void **)numbers);
 	return (stack_a);
 }
 
-char **parse_input(int argc, char *argv[])
+char	**parse_input(int argc, char *argv[])
 {
 	int		i;
 	char	*str;
 	char	**numbers;
-	
+
 	i = 2;
 	str = ft_strdup(argv[1]);
 	while (argv[i])
 	{
 		if (!argv[i][0])
-			return NULL;
+			return (NULL);
 		str = ft_strjoin2(str, " ");
 		str = ft_strjoin2(str, argv[i]);
 		i++;
 	}
 	numbers = ft_split(str, ' ');
+	free(str);
 	return (numbers);
 }
 
-void sort_three(t_list **stack_a, t_list **stack_b)
+void	sort_three(t_list **stack_a, t_list **stack_b)
 {
-	if ((*stack_a)->content > (*stack_a)->next->content && (*stack_a)->next->content > (*stack_a)->next->next->content)
+	if ((*stack_a)->content > (*stack_a)->next->content
+		&& (*stack_a)->next->content > (*stack_a)->next->next->content)
 	{
 		rotate(stack_a, "rra");
 		swap(*stack_a, "sa");
 	}
-	else if ((*stack_a)->content > (*stack_a)->next->content && (*stack_a)->next->content < (*stack_a)->next->next->content)
+	else if ((*stack_a)->content > (*stack_a)->next->content
+		&& (*stack_a)->next->content < (*stack_a)->next->next->content)
 		rotate(stack_a, "ra");
-	else if ((*stack_a)->content < (*stack_a)->next->content && (*stack_a)->next->content > (*stack_a)->next->next->content)
+	else if ((*stack_a)->content < (*stack_a)->next->content
+		&& (*stack_a)->next->content > (*stack_a)->next->next->content)
 	{
 		if ((*stack_a)->content < (*stack_a)->next->next->content)
 		{
@@ -105,7 +130,7 @@ void sort_three(t_list **stack_a, t_list **stack_b)
 	}
 }
 
-int find_min(t_list *stack_, int n)
+int	find_min(t_list *stack_, int n)
 {
 	int	min;
 
@@ -119,9 +144,9 @@ int find_min(t_list *stack_, int n)
 	return (min == n);
 }
 
-int is_sorted(t_list *stack_)
+int	is_sorted(t_list *stack_)
 {
-	int temp;
+	int	temp;
 
 	temp = stack_->content;
 	while (stack_)
@@ -134,12 +159,11 @@ int is_sorted(t_list *stack_)
 	return (1);
 }
 
-
-void sort_four(t_list **stack_a, t_list **stack_b)
+void	sort_four(t_list **stack_a, t_list **stack_b)
 {
 	if (is_sorted(*stack_a))
 		return ;
-	while(1)
+	while (1)
 	{
 		if (find_min(*stack_a, (*stack_a)->content))
 		{
@@ -152,11 +176,11 @@ void sort_four(t_list **stack_a, t_list **stack_b)
 	}
 }
 
-void sort_five(t_list **stack_a, t_list **stack_b)
+void	sort_five(t_list **stack_a, t_list **stack_b)
 {
 	if (is_sorted(*stack_a))
 		return ;
-	while(1)
+	while (1)
 	{
 		if (find_min(*stack_a, (*stack_a)->content))
 		{
@@ -169,11 +193,11 @@ void sort_five(t_list **stack_a, t_list **stack_b)
 	}
 }
 
-void indexing(t_list *stack_)
+void	indexing(t_list *stack_)
 {
-	int	i;
-	t_list *tmp;
-	t_list *head;
+	int		i;
+	t_list	*tmp;
+	t_list	*head;
 
 	head = stack_;
 	while (stack_)
@@ -190,9 +214,11 @@ void indexing(t_list *stack_)
 	}
 }
 
-int get_max(t_list *stack_)
+int	get_max(t_list *stack_)
 {
-	int max = 0;
+	int	max;
+
+	max = 0;
 	while (stack_)
 	{
 		if (stack_->index > max)
@@ -202,26 +228,29 @@ int get_max(t_list *stack_)
 	return (max);
 }
 
-void fill_a(t_list **stack_a, t_list **stack_b)
+void	fill_a(t_list **stack_a, t_list **stack_b)
 {
 	while ((*stack_b))
+	{
+		if (get_max(*stack_b) == (*stack_b)->index)
+			push(stack_b, stack_a, "pa");
+		else
 		{
-			if (get_max(*stack_b) == (*stack_b)->index)
-				push(stack_b, stack_a, "pa");
-			else
-			{
-				if (find_half(*stack_b) == 1)
-						rotate(stack_b, "rb");
-				else if (find_half(*stack_b) == 2)
-					reverse_rotate(stack_b, "rrb");
-			}
+			if (find_half(*stack_b) == 1)
+				rotate(stack_b, "rb");
+			else if (find_half(*stack_b) == 2)
+				reverse_rotate(stack_b, "rrb");
 		}
+	}
 }
 
-void _sort_(t_list **stack_a, t_list **stack_b)
+void	_sort_(t_list **stack_a, t_list **stack_b)
 {
-	int i = 0;
-	int range = 4;
+	int	i;
+	int	range;
+
+	i = 0;
+	range = 4;
 	while ((*stack_a))
 	{
 		if ((*stack_a)->index <= range && (*stack_a)->index >= i)
@@ -241,30 +270,32 @@ void _sort_(t_list **stack_a, t_list **stack_b)
 			rotate(stack_a, "ra");
 	}
 	fill_a(stack_a, stack_b);
-	
 }
 
-int find_half(t_list *stack_)
+int	find_half(t_list *stack_)
 {
-	int max = get_max(stack_);
-	int size = ft_lstsize(stack_);
-	int i = 0;
+	int	max;
+	int	size;
+	int	i;
 
+	max = get_max(stack_);
+	size = ft_lstsize(stack_);
+	i = 0;
 	while (stack_)
 	{
 		if (stack_->index == max)
-			break;
+			break ;
 		i++;
 		stack_ = stack_->next;
 	}
 	if (i < size / 2)
-		return 1;
+		return (1);
 	else
-		return 2;
-	return 0;
+		return (2);
+	return (0);
 }
 
-void option_sort(t_list **stack_a, t_list **stack_b)
+void	option_sort(t_list **stack_a, t_list **stack_b)
 {
 	if (ft_lstsize(*stack_a) > 5)
 		_sort_(stack_a, stack_b);
@@ -281,20 +312,25 @@ void option_sort(t_list **stack_a, t_list **stack_b)
 	}
 }
 
-int main(int argc, char *argv[])
+int	main(int argc, char *argv[])
 {
-	t_list *stack_a;
-	t_list *stack_b = NULL;
+	t_list	*stack_a;
+	t_list	*stack_b;
 
+	stack_b = NULL;
 	stack_a = fill_stack(parse_input(argc, argv));
 	if (!stack_a)
-		return 0;
+		return (0);
 	indexing(stack_a);
 	option_sort(&stack_a, &stack_b);
-	while (stack_a)
-	{
-		ft_printf("a->%d\n", stack_a->content);
-		stack_a = stack_a->next;
-	}
-	return 0;
+	// while (stack_a)
+	// {
+	// 	ft_printf("a->%d\n", stack_a->content);
+	// 	stack_a = stack_a->next;
+	// }
+	ft_lstclear(&stack_a, free);
+	ft_lstclear(&stack_b, free);
+	
+	system("leaks a.out");
+	return (0);
 }
