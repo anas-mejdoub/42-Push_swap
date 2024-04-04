@@ -12,18 +12,34 @@
 
 #include "libft.h"
 
-static int	overflow_checker(unsigned long nbr, int new_nb, int sign)
+// static int	overflow_checker(unsigned long nbr, int new_nb, int sign)
+// {
+// 	if (sign == 1)
+// 	{
+// 		if ((nbr >= 922337203685477580 && new_nb > 7)
+// 			|| (nbr >= 922337203685477581))
+// 			return (-1);
+// 	}
+// 	if (sign == -1)
+// 	{
+// 		if ((nbr >= 922337203685477580 && new_nb > 8)
+// 			|| (nbr >= 922337203685477581))
+// 			return (0);
+// 	}
+// 	return (1);
+// }
+static int	int_overflow_checker(unsigned long nbr, int new_nb, int sign)
 {
 	if (sign == 1)
 	{
-		if ((nbr >= 922337203685477580 && new_nb > 7)
-			|| (nbr >= 922337203685477581))
-			return (-1);
+		if ((nbr >= 214748364 && new_nb > 7)
+			|| (nbr >= 214748365))
+			return (0);
 	}
 	if (sign == -1)
 	{
-		if ((nbr >= 922337203685477580 && new_nb > 8)
-			|| (nbr >= 922337203685477581))
+		if ((nbr >= 214748364 && new_nb > 8)
+			|| (nbr >= 214748365))
 			return (0);
 	}
 	return (1);
@@ -47,7 +63,7 @@ int	ft_atoi(const char *str)
 	}
 	while (*str >= '0' && *str <= '9')
 	{
-		overflow = overflow_checker(res, *str - '0', sign);
+		overflow = int_overflow_checker(res, *str - '0', sign);
 		if (overflow != 1)
 			return (overflow);
 		res = res * 10 + *str - '0';

@@ -45,9 +45,14 @@ t_list *fill_stack(char **numbers)
 	i = 0;
 	stack_a = NULL;
 	t_list *head = stack_a;
+	if (!numbers)
+	{
+		ft_printf("error\n");
+		return (NULL);
+	}
 	while (numbers[i])
 	{
-		if (!check_numbers(stack_a, ft_atoi(numbers[i])) || !correct_number(numbers[i]))
+		if (!check_numbers(stack_a, ft_atoi(numbers[i])) || !correct_number(numbers[i]) || (ft_strlen(numbers[i]) > 1 && !ft_atoi(numbers[i])))
 		{
 			ft_printf("error\n");
 			return (NULL);
@@ -69,6 +74,8 @@ char **parse_input(int argc, char *argv[])
 	str = ft_strdup(argv[1]);
 	while (argv[i])
 	{
+		if (!argv[i][0])
+			return NULL;
 		str = ft_strjoin2(str, " ");
 		str = ft_strjoin2(str, argv[i]);
 		i++;
@@ -214,7 +221,7 @@ void fill_a(t_list **stack_a, t_list **stack_b)
 void _sort_(t_list **stack_a, t_list **stack_b)
 {
 	int i = 0;
-	int range = 15;
+	int range = 4;
 	while ((*stack_a))
 	{
 		if ((*stack_a)->index <= range && (*stack_a)->index >= i)
@@ -255,8 +262,8 @@ int find_half(t_list *stack_)
 	else
 		return 2;
 	return 0;
-	
 }
+
 void option_sort(t_list **stack_a, t_list **stack_b)
 {
 	if (ft_lstsize(*stack_a) > 5)
@@ -273,11 +280,12 @@ void option_sort(t_list **stack_a, t_list **stack_b)
 			swap(*stack_a, "sa");
 	}
 }
+
 int main(int argc, char *argv[])
 {
 	t_list *stack_a;
 	t_list *stack_b = NULL;
-	
+
 	stack_a = fill_stack(parse_input(argc, argv));
 	if (!stack_a)
 		return 0;
