@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-char	**parse_input(int argc, char *argv[])
+char	**parse_input(char *argv[])
 {
 	int		i;
 	char	*str;
@@ -38,11 +38,9 @@ t_list	*fill_stack(char **numbers)
 	int		i;
 	t_list	*stack_a;
 	int		data;
-	t_list	*head;
 
 	i = 0;
 	stack_a = NULL;
-	head = stack_a;
 	if (!numbers)
 	{
 		ft_printf("error\n");
@@ -74,14 +72,11 @@ int	correct_number(char *number)
 		i++;
 	while (number[i] && ft_isdigit(number[i]))
 		i++;
-	return (i == ft_strlen(number));
+	return (i == (int)ft_strlen(number));
 }
 
 int	check_numbers(t_list *stack_a, int to_search)
 {
-	int	i;
-
-	i = 0;
 	while (stack_a != NULL)
 	{
 		if (stack_a->content == to_search)
@@ -97,5 +92,5 @@ int check_empty_n(char *str)
 	
 	while (str[i] && str[i] == ' ')
 		i++;
-	return (ft_strlen(str) != i);
+	return ((int )ft_strlen(str) != i);
 }

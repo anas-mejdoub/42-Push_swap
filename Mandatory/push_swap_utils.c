@@ -14,7 +14,6 @@
 
 void	indexing(t_list *stack_)
 {
-	int		i;
 	t_list	*tmp;
 	t_list	*head;
 

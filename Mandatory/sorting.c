@@ -49,7 +49,7 @@ void	option_sort(t_list **stack_a, t_list **stack_b)
 	else if (ft_lstsize(*stack_a) == 4)
 		sort_four(stack_a, stack_b);
 	else if (ft_lstsize(*stack_a) == 3)
-		sort_three(stack_a, stack_b);
+		sort_three(stack_a);
 	else if (ft_lstsize(*stack_a) == 2)
 	{
 		if (!is_sorted(*stack_a))
@@ -83,7 +83,7 @@ void	sort_four(t_list **stack_a, t_list **stack_b)
 		if (find_min(*stack_a, (*stack_a)->content))
 		{
 			push(stack_a, stack_b, "pb");
-			sort_three(stack_a, stack_b);
+			sort_three(stack_a);
 			push(stack_b, stack_a, "pa");
 			return ;
 		}
@@ -91,7 +91,7 @@ void	sort_four(t_list **stack_a, t_list **stack_b)
 	}
 }
 
-void	sort_three(t_list **stack_a, t_list **stack_b)
+void	sort_three(t_list **stack_a)
 {
 	if ((*stack_a)->content > (*stack_a)->next->content
 		&& (*stack_a)->next->content > (*stack_a)->next->next->content)

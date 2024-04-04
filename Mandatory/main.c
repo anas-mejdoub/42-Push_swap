@@ -83,7 +83,9 @@ int	main(int argc, char *argv[])
 	t_list	*stack_b;
 
 	stack_b = NULL;
-	stack_a = fill_stack(parse_input(argc, argv));
+	if (argc == 1)
+		return 0;
+	stack_a = fill_stack(parse_input(argv));
 	if (!stack_a)
 		return (0);
 	indexing(stack_a);
