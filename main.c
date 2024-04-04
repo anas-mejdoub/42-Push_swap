@@ -6,7 +6,7 @@
 /*   By: amejdoub <amejdoub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 20:20:28 by amejdoub          #+#    #+#             */
-/*   Updated: 2024/04/04 14:46:07 by amejdoub         ###   ########.fr       */
+/*   Updated: 2024/04/04 15:03:16 by amejdoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,14 @@ t_list	*fill_stack(char **numbers)
 	free2d((void **)numbers);
 	return (stack_a);
 }
-
+int check_empty_n(char *str)
+{
+	int i = 0;
+	
+	while (str[i] && str[i] == ' ')
+		i++;
+	return (ft_strlen(str) == i);
+}
 char	**parse_input(int argc, char *argv[])
 {
 	int		i;
@@ -95,8 +102,8 @@ char	**parse_input(int argc, char *argv[])
 	str = ft_strdup(argv[1]);
 	while (argv[i])
 	{
-		if (!argv[i][0])
-			return (NULL);
+		if (!argv[i][0] || !check_empty_n(argv[i]))
+			return (free(str), NULL);
 		str = ft_strjoin2(str, " ");
 		str = ft_strjoin2(str, argv[i]);
 		i++;
@@ -330,7 +337,6 @@ int	main(int argc, char *argv[])
 	// }
 	ft_lstclear(&stack_a, free);
 	ft_lstclear(&stack_b, free);
-	
 	system("leaks a.out");
 	return (0);
 }
