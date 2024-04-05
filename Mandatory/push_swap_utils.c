@@ -6,7 +6,7 @@
 /*   By: amejdoub <amejdoub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 15:11:18 by amejdoub          #+#    #+#             */
-/*   Updated: 2024/04/05 22:48:16 by amejdoub         ###   ########.fr       */
+/*   Updated: 2024/04/05 22:53:45 by amejdoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int	find_min(t_list *stack_, int n)
 	return (min == n);
 }
 
-  int	find_min2(t_list *stack_)
+int	find_min2(t_list *stack_)
 {
 	int	min;
 
