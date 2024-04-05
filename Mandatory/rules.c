@@ -6,7 +6,7 @@
 /*   By: amejdoub <amejdoub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 21:16:42 by amejdoub          #+#    #+#             */
-/*   Updated: 2024/04/05 21:07:10 by amejdoub         ###   ########.fr       */
+/*   Updated: 2024/04/05 22:47:30 by amejdoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,4 +77,27 @@ void	rotate(t_list **stack_, char *operation)
 	last->next = first;
 	first->next = NULL;
 	ft_printf("%s\n", operation);
+}
+
+int	find_half_min(t_list *stack_)
+{
+	int	min;
+	int	size;
+	int	i;
+
+	min = find_min2(stack_);
+	size = ft_lstsize(stack_);
+	i = 0;
+	while (stack_)
+	{
+		if (stack_->index == min)
+			break ;
+		i++;
+		stack_ = stack_->next;
+	}
+	if (i <= size / 2)
+		return (1);
+	else
+		return (2);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: amejdoub <amejdoub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 15:09:14 by amejdoub          #+#    #+#             */
-/*   Updated: 2024/04/05 21:08:09 by amejdoub         ###   ########.fr       */
+/*   Updated: 2024/04/05 22:48:49 by amejdoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	_sort_(t_list **stack_a, t_list **stack_b)
 	int	range;
 
 	i = 0;
+	// range = 15;
 	range = range_eq(ft_lstsize(*stack_a));
 	while ((*stack_a))
 	{
@@ -70,7 +71,13 @@ void	sort_five(t_list **stack_a, t_list **stack_b)
 			push(stack_b, stack_a, "pa");
 			return ;
 		}
-		rotate(stack_a, "ra");
+		else
+		{
+			if (find_half_min(*stack_a) == 1)
+				rotate(stack_a, "ra");
+			else if (find_half_min(*stack_a) == 2)
+				reverse_rotate(stack_a, "rra");
+		}
 	}
 }
 
@@ -96,21 +103,26 @@ void	sort_three(t_list **stack_a)
 	if ((*stack_a)->content > (*stack_a)->next->content
 		&& (*stack_a)->next->content > (*stack_a)->next->next->content)
 	{
-		rotate(stack_a, "rra");
+		rotate(stack_a, "ra");
 		swap(*stack_a, "sa");
 	}
 	else if ((*stack_a)->content > (*stack_a)->next->content
 		&& (*stack_a)->next->content < (*stack_a)->next->next->content)
-		rotate(stack_a, "ra");
+		{
+			if ((*stack_a)->content > (*stack_a)->next->next->content)
+				rotate(stack_a, "ra");
+			else
+				swap(*stack_a, "sa");
+		}
 	else if ((*stack_a)->content < (*stack_a)->next->content
 		&& (*stack_a)->next->content > (*stack_a)->next->next->content)
 	{
 		if ((*stack_a)->content < (*stack_a)->next->next->content)
 		{
-			reverse_rotate(stack_a, "ra");
+			reverse_rotate(stack_a, "rra");
 			swap(*stack_a, "sa");
 		}
 		else
-			reverse_rotate(stack_a, "ra\n");
+			reverse_rotate(stack_a, "rra");
 	}
 }
