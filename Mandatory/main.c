@@ -6,7 +6,7 @@
 /*   By: amejdoub <amejdoub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 20:20:28 by amejdoub          #+#    #+#             */
-/*   Updated: 2024/04/05 18:32:27 by amejdoub         ###   ########.fr       */
+/*   Updated: 2024/04/05 20:58:57 by amejdoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ void	free2d(void **res)
 	}
 }
 
-int range_eq(int n)
+int	range_eq(int n)
 {
-	float range;
+	float	range;
 
 	range = 0.07 * n;
 	if (n <= 100)
@@ -84,7 +84,7 @@ int	main(int argc, char *argv[])
 
 	stack_b = NULL;
 	if (argc == 1)
-		return 0;
+		return (0);
 	stack_a = fill_stack(parse_input(argv));
 	if (!stack_a)
 		return (0);

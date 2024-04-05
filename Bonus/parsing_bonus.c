@@ -6,7 +6,7 @@
 /*   By: amejdoub <amejdoub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 15:04:48 by amejdoub          #+#    #+#             */
-/*   Updated: 2024/04/05 14:24:37 by amejdoub         ###   ########.fr       */
+/*   Updated: 2024/04/05 21:01:40 by amejdoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,7 @@ t_list	*fill_stack(char **numbers)
 		ft_lstadd_back(&stack_a, ft_lstnew((data)));
 		i++;
 	}
-	free2d((void **)numbers);
-	return (stack_a);
+	return (free2d((void **)numbers), stack_a);
 }
 
 int	correct_number(char *number)
@@ -86,11 +85,12 @@ int	check_numbers(t_list *stack_a, int to_search)
 	return (1);
 }
 
-int check_empty_n(char *str)
+int	check_empty_n(char *str)
 {
-	int i = 0;
-	
+	int	i;
+
+	i = 0;
 	while (str[i] && str[i] == ' ')
 		i++;
-	return ((int )ft_strlen(str) != i);
+	return ((int)ft_strlen(str) != i);
 }

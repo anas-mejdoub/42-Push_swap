@@ -6,7 +6,7 @@
 /*   By: amejdoub <amejdoub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 12:27:32 by amejdoub          #+#    #+#             */
-/*   Updated: 2024/04/03 14:29:26 by amejdoub         ###   ########.fr       */
+/*   Updated: 2024/04/05 21:04:12 by amejdoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,8 @@ void				ft_bzero(void *s, size_t n);
 int					ft_strncmp(const char *str1, const char *str2, size_t n);
 typedef struct s_list
 {
-	int			content;
-	int			index;
+	int				content;
+	int				index;
 	struct s_list	*next;
 }					t_list;
 
@@ -87,5 +87,5 @@ void				ft_lstdelone(t_list *lst, void (*del)(void *));
 void				ft_lstclear(t_list **lst, void (*del)(void *));
 // void				ft_lstiter(t_list *lst, void (*f)(void *));
 // t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
-						// void (*del)(void *));
+// void (*del)(void *));
 #endif
