@@ -6,7 +6,7 @@
 /*   By: amejdoub <amejdoub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 20:20:31 by amejdoub          #+#    #+#             */
-/*   Updated: 2024/04/04 15:16:13 by amejdoub         ###   ########.fr       */
+/*   Updated: 2024/04/05 14:12:13 by amejdoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void reverse_rotate(t_list **stack_, char *operation);
 int	get_max(t_list *stack_);
 int	is_sorted(t_list *stack_);
 int	find_min(t_list *stack_, int n);
+void re_rotate_both(t_list **stack_a, t_list **stack_b);
 void	indexing(t_list *stack_);
 int range_eq(int n);
 #endif
