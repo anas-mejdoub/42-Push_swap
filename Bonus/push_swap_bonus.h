@@ -6,7 +6,7 @@
 /*   By: amejdoub <amejdoub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 14:07:13 by amejdoub          #+#    #+#             */
-/*   Updated: 2024/04/05 14:35:46 by amejdoub         ###   ########.fr       */
+/*   Updated: 2024/04/05 16:03:56 by amejdoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,5 @@ int	correct_number(char *number);
 t_list	*fill_stack(char **numbers);
 int	check_numbers(t_list *stack_a, int to_search);
 char	**parse_input(char *argv[]);
-
+int	is_sorted(t_list *stack_);
 #endif
