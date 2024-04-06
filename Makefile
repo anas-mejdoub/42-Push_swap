@@ -1,5 +1,5 @@
 SRCS = ./Mandatory/main.c ./Mandatory/parsing.c ./Mandatory/push_swap_utils.c ./Mandatory/rules.c ./Mandatory/sorting.c ./Mandatory/push_swap_utils_extended.c
-SRCS_BONUS = ./Bonus/main_bonus.c ./Bonus/parsing_bonus.c ./Bonus/rules_bonus.c
+SRCS_BONUS = ./Bonus/main_bonus.c ./Bonus/parsing_bonus.c ./Bonus/rules_bonus.c ./Bonus/rules2_bonus.c
 OBJBS = $(SRCS:.c=.o)
 OBJBS_BONUS = $(SRCS_BONUS:.c=.o)
 NAME = push_swap
