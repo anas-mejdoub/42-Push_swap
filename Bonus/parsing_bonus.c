@@ -6,17 +6,17 @@
 /*   By: amejdoub <amejdoub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 15:04:48 by amejdoub          #+#    #+#             */
-/*   Updated: 2024/04/06 15:01:01 by amejdoub         ###   ########.fr       */
+/*   Updated: 2024/04/06 15:38:31 by amejdoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_bonus.h"
 
-char **parse_input(char *argv[])
+char	**parse_input(char *argv[])
 {
-	int i;
-	char *str;
-	char **numbers;
+	int		i;
+	char	*str;
+	char	**numbers;
 
 	i = 2;
 	str = ft_strdup(argv[1]);
@@ -35,11 +35,11 @@ char **parse_input(char *argv[])
 	return (numbers);
 }
 
-t_list *fill_stack(char **numbers)
+t_list	*fill_stack(char **numbers)
 {
-	int i;
-	t_list *stack_a;
-	int data;
+	int		i;
+	t_list	*stack_a;
+	int		data;
 
 	i = 0;
 	stack_a = NULL;
@@ -50,7 +50,9 @@ t_list *fill_stack(char **numbers)
 	}
 	while (numbers[i])
 	{
-		if (!check_numbers(stack_a, ft_atoi(numbers[i])) || !correct_number(numbers[i]) || (ft_strlen(numbers[i]) > 1 && !ft_atoi(numbers[i])))
+		if (!check_numbers(stack_a, ft_atoi(numbers[i]))
+			|| !correct_number(numbers[i]) || (ft_strlen(numbers[i]) > 1
+				&& !ft_atoi(numbers[i]) && (ft_strncmp("+0", numbers[i], ft_strlen(numbers[i])) && ft_strncmp("-0", numbers[i], ft_strlen(numbers[i])))))
 		{
 			ft_printf("Error\n");
 			return (free2d((void **)numbers), NULL);
@@ -62,10 +64,10 @@ t_list *fill_stack(char **numbers)
 	return (free2d((void **)numbers), stack_a);
 }
 
-int correct_number(char *number)
+int	correct_number(char *number)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	if (number[i] == '+' || number[i] == '-')
@@ -78,7 +80,7 @@ int correct_number(char *number)
 	return (i == (int)ft_strlen(number));
 }
 
-int check_numbers(t_list *stack_a, int to_search)
+int	check_numbers(t_list *stack_a, int to_search)
 {
 	while (stack_a != NULL)
 	{
@@ -89,9 +91,9 @@ int check_numbers(t_list *stack_a, int to_search)
 	return (1);
 }
 
-int check_empty_n(char *str)
+int	check_empty_n(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i] && str[i] == ' ')
