@@ -6,7 +6,7 @@
 /*   By: amejdoub <amejdoub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 20:20:31 by amejdoub          #+#    #+#             */
-/*   Updated: 2024/04/07 15:34:24 by amejdoub         ###   ########.fr       */
+/*   Updated: 2024/04/07 22:02:06 by amejdoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,6 @@ int		find_min(t_list *stack_, int n);
 void	indexing(t_list *stack_);
 int		range_eq(int n);
 int		find_min2(t_list *stack_);
+int		test_0(char *str);
 
 #endif
