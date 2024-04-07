@@ -6,7 +6,7 @@
 /*   By: amejdoub <amejdoub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 20:20:28 by amejdoub          #+#    #+#             */
-/*   Updated: 2024/04/06 15:33:47 by amejdoub         ###   ########.fr       */
+/*   Updated: 2024/04/07 15:15:49 by amejdoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,14 +84,16 @@ int	main(int argc, char *argv[])
 {
 	t_list	*stack_a;
 	t_list	*stack_b;
-	// ft_printf("%d\n", ft_strncmp("+0", argv[1], ft_strlen(argv[1])));
+
 	stack_b = NULL;
 	if (argc == 1)
 		return (0);
 	stack_a = fill_stack(parse_input(argv));
 	if (!stack_a)
+	{
+		write(2, "Error\n", 6);
 		return (0);
-	
+	}
 	indexing(stack_a);
 	option_sort(&stack_a, &stack_b);
 	ft_lstclear(&stack_a, free);

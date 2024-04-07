@@ -6,7 +6,7 @@
 /*   By: amejdoub <amejdoub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 14:06:59 by amejdoub          #+#    #+#             */
-/*   Updated: 2024/04/05 20:58:22 by amejdoub         ###   ########.fr       */
+/*   Updated: 2024/04/07 15:16:08 by amejdoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int	operations_ckeck(t_list **stack_a, t_list **stack_b)
 	{
 		if (!operations_options(stack_a, stack_b, operation))
 		{
-			ft_printf("KO\n");
+			write(2, "Error\n", 6);
 			free(operation);
 			return (0);
 		}
@@ -108,8 +108,10 @@ int	main(int argc, char *argv[])
 		return (0);
 	stack_a = fill_stack(parse_input(argv));
 	if (!stack_a)
+	{
+		write(2, "Error\n", 6);
 		return (0);
+	}
 	operations_ckeck(&stack_a, &stack_b);
-	system("leaks checker");
 	return (0);
 }

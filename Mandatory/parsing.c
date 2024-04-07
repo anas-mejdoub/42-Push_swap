@@ -6,7 +6,7 @@
 /*   By: amejdoub <amejdoub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 15:04:48 by amejdoub          #+#    #+#             */
-/*   Updated: 2024/04/06 15:35:20 by amejdoub         ###   ########.fr       */
+/*   Updated: 2024/04/07 14:48:00 by amejdoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,19 +44,15 @@ t_list	*fill_stack(char **numbers)
 	i = 0;
 	stack_a = NULL;
 	if (!numbers)
-	{
-		ft_printf("Error\n");
 		return (NULL);
-	}
 	while (numbers[i])
 	{
 		if (!check_numbers(stack_a, ft_atoi(numbers[i]))
 			|| !correct_number(numbers[i]) || (ft_strlen(numbers[i]) > 1
-				&& !ft_atoi(numbers[i]) && (ft_strncmp("+0", numbers[i], ft_strlen(numbers[i])) && ft_strncmp("-0", numbers[i], ft_strlen(numbers[i])))))
-		{
-			ft_printf("Error\n");
+				&& !ft_atoi(numbers[i]) && (ft_strncmp("+0", numbers[i],
+						ft_strlen(numbers[i])) && ft_strncmp("-0", numbers[i],
+						ft_strlen(numbers[i])))))
 			return (free2d((void **)numbers), NULL);
-		}
 		data = ft_atoi(numbers[i]);
 		ft_lstadd_back(&stack_a, ft_lstnew((data)));
 		i++;
