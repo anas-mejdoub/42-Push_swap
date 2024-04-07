@@ -9,15 +9,15 @@ CFLAGS = -Wall -Wextra -Werror
 
 all : $(NAME)
 
-$(NAME) : $(OBJBS)
+$(NAME) : $(OBJBS) ./Mandatory/push_swap.h 
 	make -C ./libft
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJBS) ./libft/libft.a
 
-bonus : $(OBJBS_BONUS)
+bonus : $(OBJBS_BONUS) ./bonus/push_swap_bonus.h
 	make -C ./libft
 	$(CC) $(CFLAGS) -o $(NAME_BONUS) $(OBJBS_BONUS) ./libft/libft.a
 
-%.o : %.c ./Mandatory/push_swap.h #./bonus/pipex_bonus.h
+%.o : %.c 
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean :
