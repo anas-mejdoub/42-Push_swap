@@ -18,8 +18,6 @@ This project consists of two parts:
 - **Mandatory part**
 - **Bonus Part**
 
-> Note: The **Bonus Part** is not that necessary to validate the project, but it gives some extra XPs and days for the **` The Blackhole`**.
-
 ---
 
 # Makefile
