@@ -37,7 +37,7 @@ Here are the rules that I have used in this project's makefile:
 # The Algorithm
 
 Since we have a limited number of instructions as well as a stack to deal with, we have to make that we have to implement an algorithm that efficiently sorts the stack in a small number of instructions. <br />
-That's why I have many and many algorithms to have the projects done but they don't make me feel satisfied as some of them are too fucking complicated and others will not give the full score (bonus included) like the sorting algorithm `Radix Sorting Algorithm`. <br />
+That's why I have many and many algorithms to have the projects done but they don't make me feel satisfied as some of them are too complicated and others will not give the full score (bonus included) like the sorting algorithm `Radix Sorting Algorithm`. <br />
 that's what led me to find another algorithm that gives the full score as well as it is much easier rather the other ones, and here is how it works. <br />
 
 First of all, let's see the instructions we have to sort the stack :
