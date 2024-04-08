@@ -12,8 +12,6 @@ You have at your disposal a set of integer values, 2 stacks, and a set of instru
 Your goal? Write a program in C called `push_swap` which calculates and displays
 on the standard output the smallest program, made of `Push swap language instructions`, that sorts the integers received as arguments.
 
-**``` Note: I haven't shared the PDF of this project, as well as, I haven't explained anything due to school privacy reasons!```**
-
 This project consists of two parts:
 - **Mandatory part**
 - **Bonus Part**
