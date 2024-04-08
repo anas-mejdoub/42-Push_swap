@@ -6,8 +6,8 @@
       "type": "lldb",
       "request": "launch",
       "args": [],
-      "cwd": "/Users/amejdoub/Desktop/push_swap",
-      "program": "/Users/amejdoub/Desktop/push_swap/build/Debug/outDebug"
+      "cwd": "/Users/amejdoub/Desktop/update/Mandatory",
+      "program": "/Users/amejdoub/Desktop/update/Mandatory/build/Debug/outDebug"
     }
   ]
 }
