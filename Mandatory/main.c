@@ -6,7 +6,7 @@
 /*   By: amejdoub <amejdoub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 20:20:28 by amejdoub          #+#    #+#             */
-/*   Updated: 2024/04/07 15:15:49 by amejdoub         ###   ########.fr       */
+/*   Updated: 2024/04/08 14:41:56 by amejdoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,8 @@ int	main(int argc, char *argv[])
 		write(2, "Error\n", 6);
 		return (0);
 	}
+	if (is_sorted(stack_a))
+		return (0);
 	indexing(stack_a);
 	option_sort(&stack_a, &stack_b);
 	ft_lstclear(&stack_a, free);
