@@ -6,7 +6,7 @@
 /*   By: amejdoub <amejdoub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 22:55:21 by amejdoub          #+#    #+#             */
-/*   Updated: 2024/04/07 22:02:33 by amejdoub         ###   ########.fr       */
+/*   Updated: 2024/04/08 15:51:25 by amejdoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,9 @@ int	test_0(char *str)
 	int	i;
 
 	i = 0;
-	while (str[i] == 0)
+	if (str[i] == '+' || str[i] == '-')
+		i++;
+	while (str[i] == '0')
 		i++;
 	return (i == (int)ft_strlen(str));
 }

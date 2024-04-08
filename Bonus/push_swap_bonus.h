@@ -6,7 +6,7 @@
 /*   By: amejdoub <amejdoub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 14:07:13 by amejdoub          #+#    #+#             */
-/*   Updated: 2024/04/07 15:24:08 by amejdoub         ###   ########.fr       */
+/*   Updated: 2024/04/08 15:53:13 by amejdoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 void	rotate(t_list **stack_);
 void	rotate_both(t_list **stack_a, t_list **stack_b);
+int		test_0(char *str);
 void	reverse_rotate(t_list **stack_);
 void	swap_both(t_list *stack_a, t_list *stack_b);
 void	swap(t_list *stack_a);

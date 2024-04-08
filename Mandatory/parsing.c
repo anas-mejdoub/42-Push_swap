@@ -6,7 +6,7 @@
 /*   By: amejdoub <amejdoub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 15:04:48 by amejdoub          #+#    #+#             */
-/*   Updated: 2024/04/07 22:02:15 by amejdoub         ###   ########.fr       */
+/*   Updated: 2024/04/08 15:52:21 by amejdoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ t_list	*fill_stack(char **numbers)
 			|| !correct_number(numbers[i]) || (ft_strlen(numbers[i]) > 1
 				&& !ft_atoi(numbers[i]) && (ft_strncmp("+0", numbers[i],
 						ft_strlen(numbers[i])) && ft_strncmp("-0", numbers[i],
-						ft_strlen(numbers[i])) && test_0(numbers[i]))))
+						ft_strlen(numbers[i])) && !test_0(numbers[i]))))
 			return (free2d((void **)numbers), NULL);
 		data = ft_atoi(numbers[i]);
 		ft_lstadd_back(&stack_a, ft_lstnew((data)));
