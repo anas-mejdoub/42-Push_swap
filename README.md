@@ -4,7 +4,7 @@
 ---
 
 # Push Swap
-
+  
 The Push swap project is a very simple and highly straightforward algorithm project: <br />
 > data must be sorted.
 
