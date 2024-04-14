@@ -25,14 +25,17 @@ all : $(NAME)
 
 $(NAME) : $(OBJ)
 	@ar rc $(NAME) $(OBJ)
+	@echo "\033[1;32mlibft has been made with success\033[0m"
 
 clean :
-	$(RM) $(OBJ)
+	@$(RM) $(OBJ)
+	@echo "\033[1;31mthe libft object files had been deleted\033[0m"
 
-%.o:%.c libft.h
+
+%.o:%.c	libft.h
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 fclean : clean
-	$(RM) $(NAME)
+	@$(RM) $(NAME)
 
 re : fclean all

@@ -1,3 +1,4 @@
+NAME=push_swap
 all :
 	@make -C ./Mandatory
 
