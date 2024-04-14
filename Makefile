@@ -1,31 +1,18 @@
-SRCS = ./Mandatory/main.c ./Mandatory/parsing.c ./Mandatory/push_swap_utils.c ./Mandatory/rules.c ./Mandatory/sorting.c ./Mandatory/push_swap_utils_extended.c
-SRCS_BONUS = ./Bonus/main_bonus.c ./Bonus/parsing_bonus.c ./Bonus/rules_bonus.c ./Bonus/rules2_bonus.c
-OBJBS = $(SRCS:.c=.o)
-OBJBS_BONUS = $(SRCS_BONUS:.c=.o)
-NAME = push_swap
-NAME_BONUS = checker
-CC = cc
-CFLAGS = -Wall -Wextra -Werror
+all :
+	@make -C ./Mandatory
 
-all : $(NAME)
-
-$(NAME) : $(OBJBS) ./Mandatory/push_swap.h 
-	make -C ./libft
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJBS) ./libft/libft.a
-
-bonus : $(OBJBS_BONUS) ./bonus/push_swap_bonus.h
-	make -C ./libft
-	$(CC) $(CFLAGS) -o $(NAME_BONUS) $(OBJBS_BONUS) ./libft/libft.a
-
-%.o : %.c 
-	$(CC) $(CFLAGS) -c $< -o $@
+bonus : 
+	@make -C ./Bonus
 
 clean :
-	make clean -C ./libft
-	rm -rf $(OBJBS) $(OBJBS_BONUS)
+	@make clean -C ./Mandatory
+	@make clean -C ./Bonus
 
-fclean : clean
-	make fclean -C ./libft
-	rm -rf $(NAME) $(NAME_BONUS)
+fclean :
+	@make fclean -C ./Bonus
+	@make fclean -C ./Mandatory
 
-re : fclean all
+re :
+	@make re -C ./Mandatory
+
+.PHONY : bonus

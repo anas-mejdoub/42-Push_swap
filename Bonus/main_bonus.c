@@ -6,7 +6,7 @@
 /*   By: amejdoub <amejdoub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 14:06:59 by amejdoub          #+#    #+#             */
-/*   Updated: 2024/04/07 15:16:08 by amejdoub         ###   ########.fr       */
+/*   Updated: 2024/04/14 16:49:53 by amejdoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ int	is_sorted(t_list *stack_)
 {
 	int	temp;
 
+	if (!stack_)
+		return (0);
 	temp = stack_->content;
 	while (stack_)
 	{
@@ -113,5 +115,8 @@ int	main(int argc, char *argv[])
 		return (0);
 	}
 	operations_ckeck(&stack_a, &stack_b);
+	ft_lstclear(&stack_a, free);
+	ft_lstclear(&stack_b, free);
+	system("leaks checker");
 	return (0);
 }

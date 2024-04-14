@@ -24,13 +24,13 @@ all : $(NAME)
 
 
 $(NAME) : $(OBJ)
-	ar rc $(NAME) $(OBJ)
+	@ar rc $(NAME) $(OBJ)
 
 clean :
 	$(RM) $(OBJ)
 
 %.o:%.c libft.h
-	$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 fclean : clean
 	$(RM) $(NAME)
