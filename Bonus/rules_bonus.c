@@ -6,7 +6,7 @@
 /*   By: amejdoub <amejdoub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 14:09:20 by amejdoub          #+#    #+#             */
-/*   Updated: 2024/04/14 16:42:49 by amejdoub         ###   ########.fr       */
+/*   Updated: 2024/04/14 20:05:53 by amejdoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void	push(t_list **src, t_list **dest)
 
 	if (ft_lstsize(*src) >= 1)
 	{
-		ft_printf ("%d\n", (*src)->content);
 		tmp = *src;
 		*src = (*src)->next;
 		tmp->next = *dest;
