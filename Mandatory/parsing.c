@@ -6,7 +6,7 @@
 /*   By: amejdoub <amejdoub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 15:04:48 by amejdoub          #+#    #+#             */
-/*   Updated: 2024/04/14 20:15:50 by amejdoub         ###   ########.fr       */
+/*   Updated: 2024/04/25 12:39:12 by amejdoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	**parse_input(char *argv[])
 
 	i = 2;
 	str = ft_strdup(argv[1]);
-	if (!str[0])
+	if (!str[0] || !check_empty_n(str))
 		return (free(str), NULL);
 	while (argv[i])
 	{
