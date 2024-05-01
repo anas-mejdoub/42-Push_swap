@@ -29,7 +29,6 @@ int		correct_number(char *number);
 t_list	*fill_stack(char **numbers);
 int		check_numbers(t_list *stack_a, int to_search);
 void	swap_both(t_list *stack_a, t_list *stack_b);
-int		find_half(t_list *stack_);
 int		find_half_min(t_list *stack_);
 void	push(t_list **src, t_list **dest, char *operation);
 char	**parse_input(char *argv[]);
